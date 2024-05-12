@@ -1,0 +1,29 @@
+/* .navbar
+{
+    background-image: linear-gradient(to right top, #18c96b, #34d35f, #4ddd4f, #66e73a, #7ff014);
+} */
+.nav-link
+{
+    color: white;
+    font-weight: 400;
+    font-size: large;
+}
+.nav-link:hover
+
+{
+    color: white;
+   
+}
+
+#navlinks
+{
+    font-weight: 450;
+    
+
+}
+
+#navlinks:hover
+
+{
+    color: white;
+}

@@ -1,0 +1,16 @@
+
+.dropdown-item:hover
+{
+    background-color:rgb(233, 233, 233);
+
+    text-decoration: underline;
+
+} 
+.dropdown-menu {
+    display: none;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  

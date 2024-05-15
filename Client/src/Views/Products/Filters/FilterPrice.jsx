@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
-
-export const FilterPrice = () => {
+import { useDispatch } from 'react-redux';
+import { setSelectedPrice } from '../../../Slices/PriceFilterSlice';
+export const FilterPrice = ({FilterApplied,setFilterApplied}) => {
   const [selectedInputs, setSelectedInputs] = useState([]);
-
+const dispatch=useDispatch()
   const handleCheckboxChange = (event) => {
-    const value = event.target.value;
+    const value = parseInt(event.target.value);
     if (event.target.checked) {
       setSelectedInputs([...selectedInputs, value]);
+      dispatch(setSelectedPrice([...selectedInputs,value]))
+      setFilterApplied(true)
+
     } else {
       setSelectedInputs(selectedInputs.filter(item => item !== value));
+      dispatch(setSelectedPrice(selectedInputs.filter(item=>item!==value)))
+      setFilterApplied(false)
     }
   };
 
   useEffect(() => {
     console.log(selectedInputs);
+    console.log(typeof(selectedInputs))
   }, [selectedInputs]); // Log selectedInputs whenever it changes
 
   return (
@@ -35,11 +42,11 @@ export const FilterPrice = () => {
                 className='form-check-input'
                 type='checkbox'
                 id='flexCheckDefault1'
-                value='199₹-299₹'
+                value={199}
                 onChange={handleCheckboxChange}
               />
               <label className='form-check-label' htmlFor='flexCheckDefault1'>
-                199₹ - 299₹
+                199₹ +
               </label>
             </div>
           </li>
@@ -49,11 +56,11 @@ export const FilterPrice = () => {
                 className='form-check-input'
                 type='checkbox'
                 id='flexCheckDefault2'
-                value='399₹-599₹'
+                value={299}
                 onChange={handleCheckboxChange}
               />
               <label className='form-check-label' htmlFor='flexCheckDefault2'>
-                399₹ - 599₹
+              299₹ +
               </label>
             </div>
           </li>
@@ -63,11 +70,11 @@ export const FilterPrice = () => {
                 className='form-check-input'
                 type='checkbox'
                 id='flexCheckDefault3'
-                value='599₹-999₹'
+                value={599}
                 onChange={handleCheckboxChange}
               />
               <label className='form-check-label' htmlFor='flexCheckDefault3'>
-                599₹ - 999₹ +
+               599₹ +
               </label>
             </div>
           </li>

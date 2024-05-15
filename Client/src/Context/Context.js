@@ -6,9 +6,10 @@ export const ContextProvider = ({children}) => {
     const [Itemadded,setItemAdded]=useState(false)
     const[Finaltotal,setFinaltotal]=useState(0)
     const[Coupon,setCoupon]=useState('')
+    const[Popup,setPopup]=useState(false)
 
   return (
-    <Context.Provider value={{Itemadded,setItemAdded,Finaltotal,setFinaltotal,Coupon,setCoupon}}>
+    <Context.Provider value={{Itemadded,setItemAdded,Finaltotal,setFinaltotal,Coupon,setCoupon,Popup,setPopup}}>
         {children}
     </Context.Provider>
   )

@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react'
-
-export const SIzeFilter = () => {
+import { setSelectedSizes } from '../../../Slices/SizefilterSlice'
+import { useDispatch } from 'react-redux'
+export const SIzeFilter = ({FilterApplied,setFilterApplied}) => {
     const[SizeInputs,setSizeInputs]=useState([])
-
+    const dispatch=useDispatch()
     const Sizeonchage=(event)=>{
         const value=event.target.value
         if(event.target.checked)
         {
+            dispatch(setSelectedSizes([...SizeInputs,value]))
             setSizeInputs([...SizeInputs,value])
+            setFilterApplied(true)
+
 
         }
         else
         {
             setSizeInputs(SizeInputs.filter(item=>item!==value))
+            setFilterApplied(false)
+            dispatch(setSelectedSizes(SizeInputs.filter(item=>item!==value)))
 
         }
      

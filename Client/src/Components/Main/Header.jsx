@@ -4,9 +4,11 @@ import './Header.css'; // Import the external CSS file
 import logo from '../Assets/logo.webp';
 import Search from './Search';
 import { useSelector } from 'react-redux';
+import { useCont } from '../../Context/Context';
+import SuccessAlert from '../Alerts/SuccessAlert';
 const Header = () => {
   const items=useSelector((state)=>state.cart)
-
+  const {Popup}=useCont()
   return (
     <header className="p-3 border-bottom bg-light">
       <div className="container-fluid">
@@ -88,10 +90,17 @@ const Header = () => {
               </ul>
               </div>
             </div>
+            
 
             {/* <Link to="/account/signin">Sign In</Link> |{" "}
               <Link to="/account/signup"> Sign Up</Link> */}
           </div>
+          {/* {Popup && (
+              <div style={{width:'150px'}}>
+                 <SuccessAlert />
+              </div>
+                 
+                )} */}
         </div>
       </div>
     </header>

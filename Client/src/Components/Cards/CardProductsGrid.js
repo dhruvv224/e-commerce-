@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import products from '../Data/Products';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { add } from '../../Store/CartSlice';
+// import CustomAlert from '../../Alert/CustomAlert';
+import SuccessAlert from '../Alerts/SuccessAlert';
+import { useCont } from '../../Context/Context';
+// import Alert2 from '../../Alert/Alert2';
 
 export const CardProductsGrid = ({ data }) => {
   const { img, isNew, isHot, discountPercentage, discountPrice,link,name,price,originPrice ,star,id} = data;
+  const{setPopup,Popup}=useCont()
   const dispatch=useDispatch()
   const handleAddtocart=()=>{
     dispatch(add(data))
+    setPopup(true)
     
   }
   const Buynow=()=>
@@ -17,6 +23,7 @@ export const CardProductsGrid = ({ data }) => {
   }
   return (
     <div className='card position-relative'>
+     
       <img src={img} className='card-img-top' alt='Product'></img>
       
       {isNew && (

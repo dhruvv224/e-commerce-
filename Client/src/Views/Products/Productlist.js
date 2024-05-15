@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 
 export const Productlist = () => {
   const { selectedSize } = useSelector(state => state.SizeFilter);
+  const {SearchQuery}=useSelector(state=>state.SearchQuery)
   console.log("sizes are yyyyyeyyey",selectedSize)
   console.log(selectedSize)
   // const selectedPrice2=useSelector(state=>state.PriceFilter)

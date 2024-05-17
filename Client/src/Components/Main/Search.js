@@ -2,19 +2,31 @@ import React, { useState, useEffect } from 'react';
 import './Search.css';
 import { useDispatch } from 'react-redux';
 import { setSearchQuery } from '../../Slices/SearchQuerySlice';
+import { useCont } from '../../Context/Context';
 
 export const Search = () => {
   const dispatch = useDispatch();
   const [SearchTerm, setSearchTerm] = useState('');
+  const{setFilterApplied,setSearchApplied}=useCont()
+
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
+    if(event.target.value==='')
+      {
+        // setFilterApplied(false)
+        setSearchApplied(false)
+        dispatch(setSearchQuery(''))
+        setSearchTerm('')
+      }
   };
 
   const SubmitSearch = (e) => {
     e.preventDefault();
     console.log(SearchTerm)
     dispatch(setSearchQuery(SearchTerm))
+    setSearchApplied(true)
+    // setFilterApplied(true)
   };
 
   useEffect(() => {
@@ -39,6 +51,7 @@ export const Search = () => {
           className="btn btn-primary text-white"
           type="submit"
           aria-label="Search"
+          // onClick={Submit}
         >
           <i className="bi bi-search"></i>
         </button>

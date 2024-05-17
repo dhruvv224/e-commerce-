@@ -71,7 +71,7 @@ const products= [
     discountPrice: 0,
     discountPercentage: 0,
     Size:"M",
-    color:"Light Green",
+    color:"Green",
     Brand:"Zara",
     isNew: false,
     isHot: false,

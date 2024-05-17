@@ -16,8 +16,19 @@ import SuccessAlert from '../../Components/Alerts/SuccessAlert';
 import { useSelector } from 'react-redux';
 
 export const Productlist = () => {
+  const value1=null
   const { selectedSize } = useSelector(state => state.SizeFilter);
   const {SearchQuery}=useSelector(state=>state.SearchQuery)
+  // const[FilterApplied,setFilterApplied]=useState(false)
+  const{FilterApplied,setFilterApplied,SearchApplied}=useCont()
+
+  const FormatedSearch=SearchQuery.trim().toLowerCase()
+
+  const SearchData=productsData.filter((product)=>product.Brand.toLowerCase().includes(FormatedSearch)||product.name.toLowerCase().includes(FormatedSearch))
+  console.log(SearchData)
+
+  console.log(FormatedSearch)
+
   console.log("sizes are yyyyyeyyey",selectedSize)
   console.log(selectedSize)
   // const selectedPrice2=useSelector(state=>state.PriceFilter)
@@ -42,7 +53,6 @@ console.log(selectedColorData)
   // console.log("array is",selectedSizeArray)
   console.log("Sizes are",SelectedSizes)
   console.log("colors are-----------",selectedColor)
-  const[FilterApplied,setFilterApplied]=useState(false)
   const [View, setView] = useState('grid');
   const [products, setProducts] = useState([]);
   // const[Products2,setProducts2]=useState([])
@@ -72,8 +82,11 @@ useEffect(()=>{
      const FilteredData=productsData.filter(product=>{
       const ColorMatch=SelectedColor.includes(product.color)
       const SizeMatch=selectedSize.includes(product.Size)
+
       const PriceMatch=selectedPrice.some(price=>product.price>=price)
-      return ColorMatch||SizeMatch||PriceMatch
+      // const SearchMatch=product.Brand.toLowerCase().includes(FormatedSearch) || product.name.toLowerCase().includes(FormatedSearch)
+
+      return ColorMatch||SizeMatch||PriceMatch 
      })
 
     console.log("new data is",FilteredData)
@@ -93,8 +106,24 @@ useEffect(()=>{
 
 
   
-},[SelectedColor,FilterApplied,selectedSize,selectedPrice])
+},[SelectedColor,FilterApplied,selectedSize,selectedPrice,FormatedSearch])
+useEffect(()=>{
+  if(SearchApplied){
+    const NewData=productsData.filter((product)=>{
 
+      const SearchMatch= product.Brand.toLowerCase().includes(FormatedSearch)||product.name.toLowerCase().includes(FormatedSearch)
+       return SearchMatch
+     })
+     console.log("new data",NewData)
+     setProducts(NewData)
+  }
+  else
+  {
+
+  }
+  
+
+},[FormatedSearch])
   const ChangeView = (Newview) => {
     setView(Newview);
   };
@@ -139,10 +168,10 @@ useEffect(()=>{
         <div className="row">
           <div className="col-md-3">
             <FilterCategory />
-            <FilterPrice FilterApplied={FilterApplied} setFilterApplied={setFilterApplied}/>
-            <SIzeFilter FilterApplied={FilterApplied} setFilterApplied={setFilterApplied}/>
+            <FilterPrice />
+            <SIzeFilter />
             <Review />
-            <Colors FilterApplied={FilterApplied} setFilterApplied={setFilterApplied} />
+            <Colors />
             <FilterBy />
             <Tags />
             <Service />
@@ -158,7 +187,7 @@ useEffect(()=>{
                 <span className="align-middle fw-bold">
                 {products.length} Results for
                
-                  <span className="text-warning">"T-shirt"</span>
+                  <span className="text-warning"> <span className='text-black'>{FormatedSearch}</span>  "T-shirt"</span>
                   
                 </span>
               </div>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSelectedPrice } from '../../../Slices/PriceFilterSlice';
-export const FilterPrice = ({FilterApplied,setFilterApplied}) => {
+import { useCont } from '../../../Context/Context';
+export const FilterPrice = ({}) => {
   const [selectedInputs, setSelectedInputs] = useState([]);
+  const{FilterApplied,setFilterApplied}=useCont()
 const dispatch=useDispatch()
   const handleCheckboxChange = (event) => {
     const value = parseInt(event.target.value);

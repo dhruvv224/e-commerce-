@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { setSelectedSizes } from '../../../Slices/SizefilterSlice'
 import { useDispatch } from 'react-redux'
-export const SIzeFilter = ({FilterApplied,setFilterApplied}) => {
+import { useCont } from '../../../Context/Context'
+export const SIzeFilter = () => {
+  const{FilterApplied,setFilterApplied}=useCont()
+
     const[SizeInputs,setSizeInputs]=useState([])
     const dispatch=useDispatch()
     const Sizeonchage=(event)=>{

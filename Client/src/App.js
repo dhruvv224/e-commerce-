@@ -16,6 +16,7 @@ import { Provider } from 'react-redux';
 import Cart from './Components/Cart/Cart';
 import { ContextProvider } from './Context/Context';
 import Checkout from './Components/Cart/Checkout';
+import Orders from './Components/My orders/Orders';
 function App() {
   
   return (
@@ -31,6 +32,7 @@ function App() {
   <Route path='/fashion' element={<Productlist/>}></Route>
   <Route path='/cart' element={<Cart/>}></Route>
   <Route path="/Checkout" element={<Checkout />} />
+  <Route path='/Myorder' element={<Orders/>}></Route>
 
   
 </Routes>

@@ -2,8 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setSelectedColor } from '../../../Slices/ColorFilter'
-export const Colors = ({FilterApplied,setFilterApplied}) => {
+import { useCont } from '../../../Context/Context'
+export const Colors = () => {
   const[selectedInputs,setSelectedInputs]=useState([])
+  const{FilterApplied,setFilterApplied}=useCont()
+
   const dispatch=useDispatch()
   const handleCheckboxChange=(event)=>{
     const value=event.target.value
@@ -143,12 +146,12 @@ export const Colors = ({FilterApplied,setFilterApplied}) => {
               <input
                 className="form-check-input bg-dark"
                 type="checkbox"
-                value='Dark'
+                value='Black'
                 onChange={handleCheckboxChange}
                 id="flexCheckColor8"
               />
               <label className="form-check-label" htmlFor="flexCheckColor8">
-                Dark <span className="text-muted">(7)</span>
+              Black <span className="text-muted"> (7)</span>
               </label>
             </div>
           </div>

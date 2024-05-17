@@ -2,13 +2,23 @@ import React from 'react'
 import { connect, useSelector } from 'react-redux';
 import products from '../Data/Products';
 import { useCont } from '../../Context/Context';
+import { setMyOrder } from '../../Slices/MyordersSlices';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 export const Checkout = () => {
     const items=useSelector((state)=>state.cart)
+    const {myOrders}=useSelector((state)=>state.Myorder)
+    console.log(myOrders)
+    const dispatch=useDispatch()
     console.log(items)
    const{Finaltotal}=useCont()
 
    console.log(Finaltotal)
+const Paynow=()=>{
+    dispatch(setMyOrder(items))
 
+}
     
   return (
     <div>
@@ -180,8 +190,9 @@ export const Checkout = () => {
              </div>
                 </div>
                 <div className='card-footer border-primary d-grid'>
-                    <button className='btn btn-primary' type='button'>Pay now {Finaltotal}₹</button>
-
+                    <Link to='/Myorder'>
+                    <button className='btn btn-primary' type='button' onClick={Paynow}>Pay now {Finaltotal}₹</button>
+                    </Link>
                 </div>
               </div>
             </div>

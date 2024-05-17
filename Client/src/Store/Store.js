@@ -5,6 +5,7 @@ import SizefilterSlice from "../Slices/SizefilterSlice";
 import PriceFilterSlice from "../Slices/PriceFilterSlice";
 import ColorFilter from "../Slices/ColorFilter";
 import SearchQuerySlice from "../Slices/SearchQuerySlice";
+import MyordersSlices from "../Slices/MyordersSlices";
 const Store =configureStore({
     reducer:{
         cart:Cartreducer,
@@ -12,7 +13,8 @@ const Store =configureStore({
         SizeFilter:SizefilterSlice,
         PriceFilter:PriceFilterSlice,
         ColorFilter:ColorFilter,
-        SearchQuery:SearchQuerySlice
+        SearchQuery:SearchQuerySlice,
+        Myorder:MyordersSlices
 
     }
 })

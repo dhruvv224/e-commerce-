@@ -8,15 +8,17 @@ import { useCont } from '../../Context/Context';
 import SuccessAlert from '../Alerts/SuccessAlert';
 const Header = () => {
   const items=useSelector((state)=>state.cart)
-  const {Popup}=useCont()
   return (
     <header className="p-3 border-bottom bg-light">
       <div className="container-fluid">
         <div className="row g-3">
           <div className="col-md-3 text-center">
-            <Link to="/">
-              <img alt="logo" src={logo} />
+          <h4 >Wow E-commerce</h4>
+            <Link to="/"style={{textDecoration:'none'}}>
+              {/* <img alt="logo" src={logo} /> */}
+             
             </Link>
+          
           </div>
           <div className="col-md-5">
             <Search />

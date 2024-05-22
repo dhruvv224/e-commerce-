@@ -14,7 +14,7 @@ export const Search = () => {
     setSearchTerm(event.target.value);
     if(event.target.value==='')
       {
-        // setFilterApplied(false)
+        
         setSearchApplied(false)
         dispatch(setSearchQuery(''))
         setSearchTerm('')

@@ -13,7 +13,7 @@ const Signupform = () => {
   const [userData, setUserData] = useState([]);
 
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let hasError = false;
 
@@ -52,33 +52,33 @@ const Signupform = () => {
     }
 
     if (!hasError) {
-      const NewUser={ Password, MobileNo, FirstName, LastName }
-      setUserData([...userData,NewUser ]);
+      const NewUser = { Password, MobileNo, FirstName, LastName }
+      setUserData([...userData, NewUser]);
       try {
-        const response=await axios.post('http://localhost:7001/api/customers',{FirstName,LastName,MobileNo,Password})
+        const response = await axios.post('http://localhost:7001/api/customers', { FirstName, LastName, MobileNo, Password })
         alert('user-created successfully')
 
-        
+
       } catch (error) {
         console.log(error)
-        
+
       }
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     fetchData()
-  },[])
-  const fetchData=async()=>{
+  }, [])
+  const fetchData = async () => {
     try {
-      const response=await axios.get('http://localhost:7001/api/customers')
+      const response = await axios.get('http://localhost:7001/api/customers')
 
-      const responsedata=response.data
+      const responsedata = response.data
       console.log(responsedata)
-      
+
     } catch (error) {
       console.log(error)
 
-      
+
     }
   }
   useEffect(() => {
@@ -120,8 +120,8 @@ const Signupform = () => {
 
       <div className='clearfix'></div>
       <hr></hr>
-       {/* Social Logins */}
-       <div className='row'>
+      {/* Social Logins */}
+      <div className='row'>
         <div className="col- text-center">
           <p className="text-muted small">Or you can join with</p>
         </div>

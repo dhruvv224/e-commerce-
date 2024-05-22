@@ -1,9 +1,13 @@
 const express=require("express");
 const app=express();
-app.get('/',(req,res)=>{
-    res.send("hello")
-})
-const PORT=process.env.PORT || 8000;
-app.listen(PORT,()=>{
-    console.log("app is running at ",PORT)
-})
+const connectDB=require('./Config/Database')
+const cors=require('cors');
+connectDB()
+app.use(cors())
+app.use(express.json())
+const PORT=process.env.PORT || 7001
+app.listen(PORT,()=>console.log("server started on port ",PORT))
+//  apis
+
+
+app.use('/api/customers',require('./Routes/CustomerRoute'))

@@ -11,3 +11,4 @@ app.listen(PORT,()=>console.log("server started on port ",PORT))
 
 
 app.use('/api/customers',require('./Routes/CustomerRoute'))
+app.use('/api/myorders',require('./Routes/Myorders'))

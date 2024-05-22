@@ -61,3 +61,4 @@ const MyorderSchema=new mongoose.Schema({
 
 
 })
+module.exports=mongoose.model('Myorder',MyorderSchema)

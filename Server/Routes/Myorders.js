@@ -2,7 +2,7 @@ const express =require('express')
 const app=express()
 const Myorder=require('../Models/Myorders.js')
 const router=express.Router()
-app.router('/',async(req,res)=>{
+router.get('/',async(req,res)=>{
     try {
         const myorder=await Myorder.find()
         res.json(myorder)
@@ -12,4 +12,5 @@ app.router('/',async(req,res)=>{
         
     }
 })
+
 module.exports=router

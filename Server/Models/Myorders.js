@@ -33,7 +33,7 @@ const MyorderSchema=new mongoose.Schema({
     type:Boolean,
     required:true
    }, isNew:{
-    type:boolean,
+    type:Boolean,
     required:true
    },
    link:{

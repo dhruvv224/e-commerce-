@@ -22,6 +22,7 @@ export const Signup = () => {
           </Link>
                 </div>
                 <div className='col-md-6 p-3'>
+                  {/* <div></div> */}
                     <h4 className='text-center'>Sign up</h4>
                     <Signupform/>
                 </div>

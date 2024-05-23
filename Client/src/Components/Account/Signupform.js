@@ -53,7 +53,7 @@ const Signupform = () => {
 
     if (!hasError) {
       const NewUser = { Password, MobileNo, FirstName, LastName }
-      setUserData([...userData, NewUser]);
+      setUserData([...userData, NewUser])
       try {
         const response = await axios.post('http://localhost:7001/api/customers', { FirstName, LastName, MobileNo, Password })
         alert('user-created successfully')
